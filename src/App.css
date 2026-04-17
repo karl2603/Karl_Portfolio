@@ -1,26 +1,18 @@
-/* App.css */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Ultra-Premium Palette: Deep Black, Soft White, Neutral Gray */
   --bg-dark: #000000;
   --bg-card: #09090b;
   --bg-surface: #121214;
-  
   --text-main: #FAFAFA;
   --text-muted: #A1A1AA;
   --text-dim: #52525B;
-  
   --accent: #E4E4E7;
   --accent-glow: rgba(228, 228, 231, 0.05);
-  
   --font-display: 'Syne', sans-serif;
   --font-body: 'Inter', sans-serif;
-
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  
   --glass-bg: rgba(9, 9, 11, 0.4);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-highlight: rgba(255, 255, 255, 0.15);
@@ -47,7 +39,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Ambient Background --- */
 .ambient-background {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
@@ -75,7 +66,6 @@ body {
 .orb-1 { width: 70vw; height: 70vw; background: #ffffff; top: -20%; left: -10%; }
 .orb-2 { width: 50vw; height: 50vw; background: #ffffff; bottom: -10%; right: -5%; }
 
-/* Typography & Layout */
 section {
   padding: clamp(100px, 15vh, 200px) 5vw;
   max-width: 1800px;
@@ -130,7 +120,6 @@ section {
   font-weight: 600;
 }
 
-/* Custom Cursor */
 .custom-cursor {
   position: fixed;
   top: 0;
@@ -154,7 +143,6 @@ section {
   mix-blend-mode: normal;
 }
 
-/* Magnetic & Reveal Wrappers */
 .magnetic-wrapper {
   display: inline-block;
 }
@@ -175,7 +163,6 @@ section {
   will-change: transform, opacity;
 }
 
-/* Navbar */
 .navbar {
   position: fixed;
   top: 0;
@@ -248,7 +235,6 @@ section {
   box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
-/* Buttons */
 .btn-primary, .btn-outline {
   display: inline-flex;
   align-items: center;
@@ -302,7 +288,6 @@ section {
   transform: translateY(2px);
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -379,7 +364,6 @@ section {
   pointer-events: none;
 }
 
-/* About Section */
 .about-wrapper {
   display: grid;
   grid-template-columns: 1fr;
@@ -421,7 +405,6 @@ section {
   font-weight: 500;
 }
 
-/* Projects Section */
 .projects-stack {
   display: flex;
   flex-direction: column;
@@ -588,7 +571,6 @@ section {
   transform-origin: left;
 }
 
-/* Services Section */
 .services-list {
   display: flex;
   flex-direction: column;
@@ -656,7 +638,6 @@ section {
   transform: rotate(45deg);
 }
 
-/* Pricing Section */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -748,7 +729,6 @@ section {
   justify-content: center;
 }
 
-/* Visually Stunning Skills Section */
 .bento-stack-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -870,7 +850,6 @@ section {
   color: var(--text-main);
 }
 
-/* React specific animation */
 .spin-icon {
   animation: spin 10s linear infinite;
 }
@@ -879,7 +858,6 @@ section {
   100% { transform: rotate(360deg); }
 }
 
-/* Experience List */
 .experience-list {
   display: flex;
   flex-direction: column;
@@ -939,16 +917,15 @@ section {
   font-size: 1.05rem;
 }
 
-/* Contact Modern Form - Spacing Upgraded */
 .contact-wrapper {
-  padding: 120px 80px;
+  padding: 100px 80px;
   border-radius: 24px;
   background: var(--bg-surface);
   border: 1px solid var(--glass-border);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 140px;
-  align-items: start;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 120px;
+  align-items: center;
   position: relative;
   overflow: hidden;
 }
@@ -966,13 +943,21 @@ section {
   font-size: clamp(3rem, 5vw, 4.5rem);
   letter-spacing: -0.03em;
   line-height: 1.05;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .contact-desc {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-muted);
   line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.contact-links {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .email-link {
@@ -982,6 +967,7 @@ section {
   text-decoration: none;
   position: relative;
   display: inline-block;
+  width: fit-content;
 }
 
 .email-link::after {
@@ -1005,17 +991,17 @@ section {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 80px;
 }
 
-.input-row { display: flex; gap: 60px; }
+.input-row { display: flex; gap: 80px; }
 .input-group { position: relative; width: 100%; }
 
 .input-group input, .input-group textarea {
   width: 100%;
   background: transparent;
   border: none;
-  padding: 16px 0;
+  padding: 24px 0;
   font-size: 1.2rem;
   color: var(--text-main);
   font-family: var(--font-body);
@@ -1026,7 +1012,7 @@ section {
 
 .input-group label {
   position: absolute;
-  top: 16px;
+  top: 24px;
   left: 0;
   color: var(--text-dim);
   font-size: 1.2rem;
@@ -1038,7 +1024,7 @@ section {
 .input-group textarea:focus ~ label,
 .input-group input:not(:placeholder-shown) ~ label,
 .input-group textarea:not(:placeholder-shown) ~ label {
-  top: -24px;
+  top: -12px;
   font-size: 0.8rem;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -1064,9 +1050,8 @@ section {
 .input-group input:focus ~ .input-line::after,
 .input-group textarea:focus ~ .input-line::after { transform: scaleX(1); }
 
-.submit-btn-wrapper { margin-top: 20px; }
+.submit-btn-wrapper { margin-top: 16px; }
 
-/* Simple Aesthetic Footer */
 .footer {
   padding: 80px 5vw 40px;
   background: var(--bg-dark);
@@ -1123,7 +1108,6 @@ section {
   font-size: 0.9rem;
 }
 
-/* Media Queries for full responsiveness */
 @media (max-width: 1200px) {
   .contact-wrapper {
     gap: 80px;
@@ -1153,7 +1137,7 @@ section {
 
 @media (max-width: 768px) {
   section { padding: 80px 5vw; }
-  .input-row { flex-direction: column; gap: 48px; }
+  .input-row { flex-direction: column; gap: 40px; }
   .nav-links { display: none; }
   .custom-cursor { display: none; }
   * { cursor: auto !important; }

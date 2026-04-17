@@ -4,11 +4,11 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'fra
 import { ArrowUpRight, ArrowRight, Download, Check } from 'lucide-react';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { FaJava, FaInstagram, FaHtml5, FaCss3Alt } from 'react-icons/fa';
-import { 
-  SiC, SiPython, SiJavascript, SiReact, 
-  SiReactrouter, SiRedux, SiTailwindcss, SiSpringboot, 
-  SiMysql, SiNpm, SiGit, SiGithub, SiNotion, SiVercel, 
-  SiNetlify, SiRender 
+import {
+  SiC, SiPython, SiJavascript, SiReact,
+  SiReactrouter, SiRedux, SiTailwindcss, SiSpringboot,
+  SiMysql, SiNpm, SiGit, SiGithub, SiNotion, SiVercel,
+  SiNetlify, SiRender
 } from 'react-icons/si';
 import './App.css';
 
@@ -85,7 +85,7 @@ const CustomCursor = () => {
 
   useEffect(() => {
     const updateMousePosition = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
-    
+
     const handleMouseOver = (e) => {
       const target = e.target;
       if (target.closest('.project-card')) setCursorState('view');
@@ -117,9 +117,9 @@ const CustomCursor = () => {
     >
       <AnimatePresence>
         {cursorState === 'view' && (
-          <motion.span 
-            initial={{ opacity: 0, scale: 0.5 }} 
-            animate={{ opacity: 1, scale: 1 }} 
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             className="cursor-text"
           >
@@ -143,7 +143,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav 
+    <motion.nav
       className={`navbar ${scrolled ? 'scrolled' : ''}`}
       initial={{ y: "-100%" }}
       animate={{ y: 0 }}
@@ -153,14 +153,14 @@ const Navbar = () => {
         <div className="nav-logo interactive">Karl</div>
       </Magnetic>
       <div className="nav-links">
-        {['About', 'Work', 'Services', 'Pricing', 'Stack'].map((item) => (
-          <Magnetic key={item} strength={0.2}>
+        {['About', 'Projects', 'Services', 'Pricing', 'Skills'].map((item) => (
+          <Magnetic key={item} strength={0.3}>
             <a href={`#${item.toLowerCase()}`} className="nav-link interactive">
               {item}
             </a>
           </Magnetic>
         ))}
-        <Magnetic strength={0.3}>
+        <Magnetic strength={0.8}>
           <a href="#contact" className="nav-btn interactive">
             <div className="btn-inner">Start Project</div>
           </a>
@@ -179,29 +179,29 @@ const Hero = () => {
     <section className="hero" id="home">
       <div className="hero-container">
         <motion.div className="hero-content" style={{ y: yText }}>
-          
+
           <h1 className="hero-title">
-            <motion.span 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
+            <motion.span
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease }}
               style={{ display: 'inline-block' }}
             >
               Karl
             </motion.span>
-            <br/>
-            <motion.span 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 1, ease, delay: 0.1 }} 
+            <br />
+            <motion.span
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease, delay: 0.1 }}
               className="italic-display text-muted"
               style={{ display: 'inline-block' }}
             >
               Full Stack Developer.
             </motion.span>
           </h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.3 }}
@@ -209,22 +209,22 @@ const Hero = () => {
           >
             I design and build Software Applications that don’t break, from high performance React frontends to scalable Java backends.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.4 }}
             className="hero-cta-group"
           >
-            <Magnetic strength={0.2}>
+            <Magnetic strength={0.4}>
               <a href="#work" className="btn-primary interactive group">
-                <span className="btn-text">View Work</span>
+                <span className="btn-text">View Projects</span>
                 <span className="btn-icon">
                   <ArrowRight size={18} className="arrow-icon" color="#000" />
                 </span>
               </a>
             </Magnetic>
-            <Magnetic strength={0.2}>
+            <Magnetic strength={0.4}>
               <a href="/KarlResume.pdf" download="KarlResume.pdf" className="btn-outline interactive group">
                 <span className="btn-text">Download Resume</span>
                 <Download size={18} className="group-hover:translate-y-1 transition-transform" />
@@ -233,17 +233,17 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="hero-visuals"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease, delay: 0.2 }}
         >
           <div className="hero-image-main">
-            <motion.img 
+            <motion.img
               style={{ y: yImage }}
-              src="./profile.jpg" 
-              alt="Karl - Full Stack Developer" 
+              src="./profile.jpg"
+              alt="Karl - Full Stack Developer"
             />
             <div className="hero-image-overlay"></div>
           </div>
@@ -256,7 +256,7 @@ const Hero = () => {
 const About = () => {
   return (
     <section className="about" id="about">
-       <motion.div 
+      <motion.div
         className="about-wrapper"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -267,12 +267,12 @@ const About = () => {
           <span className="number">01</span>
           <span className="label-text">About</span>
         </div>
-        
+
         <div className="about-grid">
           <h2 className="about-headline">
             Turning complex ideas into <span className="italic-display text-muted">production grade systems.</span>
           </h2>
-          
+
           <div className="about-content-right">
             <p className="about-paragraph">
               I focus on building real world software that is reliable, scalable, and maintainable. I approach development as system design, not just coding, combining strong fundamentals with modern full-stack tools to create applications that perform consistently and handle real usage.
@@ -288,62 +288,62 @@ const About = () => {
 };
 
 const Projects = () => {
- const projects = [
-  {
-    title: "Novaport AI Agent",
-    type: "Personal Project",
-    description: "An AI-powered assistant designed to streamline workflows and automate repetitive tasks. Built with a focus on real-time interaction, clean UI, and seamless integration with modern APIs to deliver a practical and responsive user experience.",
-    tech: ["React", "Tailwind CSS", "Python", "Gemini AI"],
-    category: "AI-Full Stack",
-    year: "2026",
-    link: "https://novaport-ai.vercel.app/",
-    image: "./Novaport.png"
-  },
-  {
-    title: "Crust & Crunch",
-    type: "Freelance Project",
-    description: "A modern, high-conversion website built for a cafe brand, focusing on visual appeal and user engagement. Designed and developed to enhance brand identity while ensuring smooth navigation and strong performance across devices.",
-    tech: ["React", "Tailwind CSS", "3D Animated", "React Forms", "Vercel"],
-    category: "Frontend",
-    year: "2026",
-    link: "https://crust-and-crunch.vercel.app/",
-    image: "./CrustCrunch.png"
-  },
-  {
-    title: "MindCare Clinic",
-    type: "Freelance Project",
-    description: "A professional website developed for a therapy clinic, focusing on trust, accessibility, and user comfort. Designed to present services clearly while maintaining a calm and structured user experience.",
-    tech: ["React", "React Forms", "Netlify"],
-    category: "Frontend",
-    year: "2026",
-    link: "https://happymindcare.in/",
-    image: "./Mindcare.png"
-  },
-  {
-    title: "Task Flow",
-    type: "Personal Project",
-    description: "A productivity-focused task management application built to organize workflows efficiently. Features a clean interface, intuitive interactions, and structured state management to ensure reliability and ease of use.",
-    tech: ["React", "React Router", "CSS"],
-    category: "Frontend",
-    year: "2025",
-    link: "https://task-flow-phi-eight.vercel.app/",
-    image: "./Taskflow.png"
-  },
-  {
-    title: "GitHub Explorer",
-    type: "Personal Project",
-    description: "A dynamic web application that fetches and visualizes GitHub user data using external APIs. Built with Axios for efficient data handling and designed to provide quick insights into repositories and activity.",
-    tech: ["React", "Axios", "GitHub API"],
-    category: "Frontend",
-    year: "2025",
-    link: "https://git-hub-explorer-psi.vercel.app/",
-    image: "./GithubExpo.png"
-  }
-];
+  const projects = [
+    {
+      title: "Novaport AI Agent",
+      type: "Personal Project",
+      description: "An AI-powered assistant designed to streamline workflows and automate repetitive tasks. Built with a focus on real-time interaction, clean UI, and seamless integration with modern APIs to deliver a practical and responsive user experience.",
+      tech: ["React", "Tailwind CSS", "Python", "Gemini AI"],
+      category: "AI-Full Stack",
+      year: "2026",
+      link: "https://novaport-ai.vercel.app/",
+      image: "./Novaport.png"
+    },
+    {
+      title: "Crust & Crunch",
+      type: "Freelance Project",
+      description: "A modern, high-conversion website built for a cafe brand, focusing on visual appeal and user engagement. Designed and developed to enhance brand identity while ensuring smooth navigation and strong performance across devices.",
+      tech: ["React", "Tailwind CSS", "3D Animated", "React Forms", "Vercel"],
+      category: "Frontend",
+      year: "2026",
+      link: "https://crust-and-crunch.vercel.app/",
+      image: "./CrustCrunch.png"
+    },
+    {
+      title: "MindCare Clinic",
+      type: "Freelance Project",
+      description: "A professional website developed for a therapy clinic, focusing on trust, accessibility, and user comfort. Designed to present services clearly while maintaining a calm and structured user experience.",
+      tech: ["React", "React Forms", "Netlify"],
+      category: "Frontend",
+      year: "2026",
+      link: "https://happymindcare.in/",
+      image: "./Mindcare.png"
+    },
+    {
+      title: "Task Flow",
+      type: "Personal Project",
+      description: "A productivity-focused task management application built to organize workflows efficiently. Features a clean interface, intuitive interactions, and structured state management to ensure reliability and ease of use.",
+      tech: ["React", "React Router", "CSS"],
+      category: "Frontend",
+      year: "2025",
+      link: "https://task-flow-phi-eight.vercel.app/",
+      image: "./Taskflow.png"
+    },
+    {
+      title: "GitHub Explorer",
+      type: "Personal Project",
+      description: "A dynamic web application that fetches and visualizes GitHub user data using external APIs. Built with Axios for efficient data handling and designed to provide quick insights into repositories and activity.",
+      tech: ["React", "Axios", "GitHub API"],
+      category: "Frontend",
+      year: "2025",
+      link: "https://git-hub-explorer-psi.vercel.app/",
+      image: "./GithubExpo.png"
+    }
+  ];
 
   return (
     <section className="projects-section" id="work">
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -357,7 +357,7 @@ const Projects = () => {
       </motion.div>
       <div className="projects-stack">
         {projects.map((project, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="project-card interactive"
             initial={{ opacity: 0, y: 60 }}
@@ -370,7 +370,7 @@ const Projects = () => {
                 <img src={project.image} alt={project.title} className="project-image" />
               </div>
             </div>
-            
+
             <div className="project-info">
               <div className="project-meta">
                 <span className="project-category">{project.category}</span>
@@ -381,7 +381,7 @@ const Projects = () => {
                 <span className="project-type-indicator">[{project.type}]</span>
               </div>
               <p className="project-desc">{project.description}</p>
-              
+
               <div className="project-footer">
                 <div className="project-tech">
                   {project.tech.map((t, i) => <span key={i}>{t}</span>)}
@@ -405,38 +405,38 @@ const Services = () => {
     {
       num: "01",
       title: "Frontend Architecture",
-      desc: "Building scalable, maintainable, and highly performant component systems utilizing React, Redux, and modern CSS frameworks to deliver pixel-perfect user interfaces."
+      desc: "Designing scalable, maintainable, and highly performant interfaces using React, Redux, and modern styling systems to deliver responsive, consistent, and production-ready user experiences."
     },
     {
       num: "02",
       title: "Backend Engineering",
-      desc: "Designing and implementing robust REST APIs and microservices utilizing Spring Boot and Java, focusing on security, scalability, and optimal database interactions."
+      desc: "Building secure and scalable REST APIs and backend services using Spring Boot and Java, ensuring clean architecture, reliable data handling, and efficient database interactions."
     },
     {
       num: "03",
       title: "Systems Optimization",
-      desc: "Refactoring legacy infrastructure, improving rendering cycles, optimizing SQL queries, and deploying via robust CI/CD pipelines for maximum application efficiency."
+      desc: "Improving existing systems by refactoring codebases, optimizing rendering performance, tuning database queries, and streamlining deployment workflows for faster and more efficient applications."
     }
   ];
 
   return (
     <section className="services" id="services">
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={transition}
       >
-         <div className="section-label">
+        <div className="section-label">
           <span className="number">03</span>
           <span className="label-text">Core Expertise</span>
         </div>
       </motion.div>
-      
+
       <div className="services-list">
         {services.map((service, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="service-row interactive group"
             initial={{ opacity: 0, y: 40 }}
@@ -460,31 +460,34 @@ const Services = () => {
 const Pricing = () => {
   const tiers = [
     {
-      name: "Frontend Foundation",
-      price: "$2,000+",
-      desc: "High-performance React implementation with strict adherence to design specifications and smooth animations.",
-      features: ["Component Architecture", "State Management (Redux)", "Responsive Layout", "Performance Audit"],
+      name: "Frontend Build",
+      price: "₹6,000+",
+      desc: "Clean, responsive frontend development focused on performance, usability, and accurate implementation of design.",
+      features: ["React Development", "Responsive Design", "Multi Page", "Basic SEO Setup", "Contact Forms Integration", "Basic Maintenance"
+      ],
       highlight: false
     },
     {
-      name: "Full-Stack System",
-      price: "$5,000+",
-      desc: "End-to-end architecture bridging secure backend services with premium, interactive frontends.",
-      features: ["Spring Boot Backend", "MySQL Database Design", "React/Redux Frontend", "REST API Development", "Deployment Pipeline"],
+      name: "Full-Stack Application",
+      price: "₹15,000+",
+      desc: "Complete web application development including frontend, backend, and database integration for real-world use.",
+      features: ["React Frontend", "Spring Boot Backend", "MySQL Database", "REST API Integration", "Deployment Setup", "Maintenance Support", "Domain Purchase"
+      ],
       highlight: true
     },
     {
-      name: "Enterprise Retainer",
+      name: "Custom Work",
       price: "Custom",
-      desc: "Ongoing technical partnership for scaling systems, adding features, and refactoring legacy codebases.",
-      features: ["Architecture Consulting", "Codebase Refactoring", "Scalability Planning", "Security Hardening"],
+      desc: "Flexible development for unique requirements, feature additions, or improvements to existing applications.",
+      features: ["Feature Development", "Bug Fixes", "Performance Improvements", "UI Enhancements", "API Integration", "Database Management", "Ongoing Support"
+      ],
       highlight: false
     }
   ];
 
   return (
     <section className="pricing" id="pricing">
-      <motion.div 
+      <motion.div
         className="section-header center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -493,13 +496,13 @@ const Pricing = () => {
       >
         <div className="section-label mx-auto">
           <span className="number">04</span>
-          <span className="label-text">Investment</span>
+          <span className="label-text">Services & Pricing</span>
         </div>
       </motion.div>
 
       <div className="pricing-grid">
         {tiers.map((tier, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className={`pricing-card interactive ${tier.highlight ? 'highlight' : ''}`}
             initial={{ opacity: 0, y: 40 }}
@@ -521,7 +524,7 @@ const Pricing = () => {
                 </div>
               ))}
             </div>
-            <Magnetic strength={0.2}>
+            <Magnetic strength={0.4}>
               <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" rel="noopener noreferrer" className={`pricing-btn interactive ${tier.highlight ? 'btn-primary' : 'btn-outline'}`}>
                 <span className="btn-text">Get Started</span>
               </a>
@@ -535,55 +538,55 @@ const Pricing = () => {
 
 const TechStack = () => {
   const stack = [
-    { 
-      category: "Programming Languages", 
+    {
+      category: "Programming Languages",
       items: [
-        { name: "C", icon: <SiC color="#A8B9CC" /> }, 
-        { name: "Python", icon: <SiPython color="#3776AB" /> }, 
+        { name: "C", icon: <SiC color="#A8B9CC" /> },
+        { name: "Python", icon: <SiPython color="#3776AB" /> },
         { name: "Java", icon: <FaJava color="#007396" /> }
-      ] 
+      ]
     },
-    { 
-      category: "Backend & Database", 
+    {
+      category: "Backend & Database",
       items: [
-        { name: "Java", icon: <FaJava color="#007396" /> }, 
+        { name: "Java", icon: <FaJava color="#007396" /> },
         { name: "MySQL", icon: <SiMysql color="#4479A1" /> },
-        { name: "JDBC", icon: <FaJava color="#007396" /> }, 
+        { name: "JDBC", icon: <FaJava className="opacity-60" /> },
         { name: "Spring Boot", icon: <SiSpringboot color="#6DB33F" /> }
-      ] 
+      ]
     },
-    { 
-      category: "Frontend Ecosystem", 
+    {
+      category: "Frontend Ecosystem",
       items: [
-        { name: "HTML5", icon: <FaHtml5 color="#E34F26" /> }, 
-        { name: "CSS3", icon: <FaCss3Alt color="#1572B6" /> }, 
-        { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> }, 
-        { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> }, 
-        { name: "React Router", icon: <SiReactrouter color="#CA4245" /> }, 
-        { name: "Redux", icon: <SiRedux color="#764ABC" /> }, 
+        { name: "HTML5", icon: <FaHtml5 color="#E34F26" /> },
+        { name: "CSS3", icon: <FaCss3Alt color="#1572B6" /> },
+        { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
+        { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> },
+        { name: "React Router", icon: <SiReactrouter color="#CA4245" /> },
+        { name: "Redux", icon: <SiRedux color="#764ABC" /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss color="#06B6D4" /> }
-      ] 
+      ]
     },
-    { 
-      category: "Tools & Deployment", 
+    {
+      category: "Tools & Deployment",
       items: [
-        { name: "NPM", icon: <SiNpm color="#CB3837" /> }, 
-        { name: "Git", icon: <SiGit color="#F05032" /> }, 
-        { name: "GitHub", icon: <SiGithub color="#FFFFFF" /> }, 
-        { name: "Notion", icon: <SiNotion color="#FFFFFF" /> }, 
-        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> }, 
-        { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> }, 
+        { name: "NPM", icon: <SiNpm color="#CB3837" /> },
+        { name: "Git", icon: <SiGit color="#F05032" /> },
+        { name: "GitHub", icon: <SiGithub color="#FFFFFF" /> },
+        { name: "Notion", icon: <SiNotion color="#FFFFFF" /> },
+        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> },
+        { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> },
         { name: "Render", icon: <SiRender color="#46E3B7" /> }
-      ] 
+      ]
     }
   ];
 
   const handleMouseMove = (e) => {
     const cards = document.querySelectorAll('.bento-box');
-    for(const card of cards) {
+    for (const card of cards) {
       const rect = card.getBoundingClientRect(),
-            x = e.clientX - rect.left,
-            y = e.clientY - rect.top;
+        x = e.clientX - rect.left,
+        y = e.clientY - rect.top;
       card.style.setProperty("--mouse-x", `${x}px`);
       card.style.setProperty("--mouse-y", `${y}px`);
     }
@@ -591,7 +594,7 @@ const TechStack = () => {
 
   return (
     <section className="tech-stack" id="stack" onMouseMove={handleMouseMove}>
-       <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -600,13 +603,13 @@ const TechStack = () => {
       >
         <div className="section-label">
           <span className="number">05</span>
-          <span className="label-text">Technical Arsenal</span>
+          <span className="label-text">Tech Stack</span>
         </div>
       </motion.div>
 
       <div className="bento-stack-grid">
         {stack.map((group, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="bento-box interactive"
             initial={{ opacity: 0, y: 40 }}
@@ -632,14 +635,14 @@ const TechStack = () => {
 
 const Experience = () => {
   const experiences = [
-    { year: "2023 - Present", role: "Software Engineer", company: "Independent", desc: "Architecting end-to-end full-stack applications. Bridging sophisticated Java/Spring Boot backends with highly interactive, visually striking React frontends for various global clients, ensuring high performance and scalability." },
-    { year: "2022 - 2023", role: "Frontend Architect", company: "TechNova Inc.", desc: "Led a massive refactor of legacy infrastructure. Integrated Redux for deterministic state management, heavily optimized React rendering cycles to improve load times by 40%, and deployed via robust CI/CD pipelines." },
-    { year: "2021 - Present", role: "Computer Science Undergrad", company: "University", desc: "Currently a 3rd-year student concentrating on core algorithms, distributed systems, and advanced software design. Actively honing a rigorous, mathematical approach to solving complex engineering challenges." }
+    { year: "Feb 2026 - Present", role: "Web Developer", company: "Freelance", desc: "Working with clients to design and build responsive, high-performance websites and web applications. Focused on clean UI, reliable backend integration, and delivering production-ready solutions tailored to real business needs."},
+    { year: "Dec 2024 - Jan 2025", role: "Frontend Developer Intern", company: "CodeBind Technologies", desc: "Contributed to frontend development using React, improving UI consistency and performance. Worked with reusable components, handled state management, and collaborated on building responsive and maintainable interfaces."},
+    { year: "Aug 2023 - Present", role: "Computer Science Student", company: "SRM University", desc: "Pursuing a degree in Computer Science with a focus on core programming, data structures, and system design. Building practical projects to apply concepts in real-world scenarios and strengthen problem-solving skills."}
   ];
 
   return (
     <section className="experience" id="experience">
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -648,14 +651,14 @@ const Experience = () => {
       >
         <div className="section-label">
           <span className="number">06</span>
-          <span className="label-text">The Journey</span>
+          <span className="label-text">Experience</span>
         </div>
       </motion.div>
 
       <div className="experience-list">
         {experiences.map((exp, index) => (
-          <motion.div 
-            key={index} 
+          <motion.div
+            key={index}
             className="experience-item interactive group"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -681,7 +684,7 @@ const Experience = () => {
 const Contact = () => {
   return (
     <section className="contact" id="contact">
-      <motion.div 
+      <motion.div
         className="contact-wrapper interactive"
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -690,21 +693,21 @@ const Contact = () => {
       >
         <div className="contact-text">
           <h2 className="contact-title">
-            Let's construct <br/>
-            <span className="italic-display text-muted">excellence.</span>
+            Let’s build something <br />
+            <span className="italic-display text-muted">that actually works.</span>
           </h2>
           <p className="contact-desc">
-            Currently available for engineering roles and high-end technical partnerships. Connect with me to discuss architectural requirements or potential collaborations.
+            I’m currently open to freelance projects and collaboration opportunities. If you have something in mind, Better Call Karl!
           </p>
           <div className="contact-links mt-12 flex flex-col gap-6">
-            <Magnetic strength={0.2}>
-               <a href="mailto:hello@example.com" className="email-link interactive">
-                  hello@example.com
-               </a>
+            <Magnetic strength={0.4}>
+              <a href="mailto:arvindrajkarl@gmail.com" className="email-link interactive">
+                arvindrajkarl@gmail.com
+              </a>
             </Magnetic>
           </div>
         </div>
-        
+
         <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
           <div className="input-row">
             <div className="input-group">
@@ -720,16 +723,16 @@ const Contact = () => {
           </div>
           <div className="input-group">
             <textarea id="message" required rows="1" className="interactive" placeholder=" "></textarea>
-            <label htmlFor="message">Project Scope</label>
+            <label htmlFor="message">Project Details</label>
             <div className="input-line"></div>
           </div>
           <div className="submit-btn-wrapper">
-             <Magnetic strength={0.2}>
-               <button type="submit" className="btn-primary interactive group">
-                  <span className="btn-text">Initialize</span>
-                  <ArrowRight size={18} className="arrow-icon" color="#000" />
-               </button>
-             </Magnetic>
+            <Magnetic strength={0.8}>
+              <button type="submit" className="btn-primary interactive group">
+                <span className="btn-text">Send Message</span>
+                <ArrowRight size={18} className="arrow-icon" color="#000" />
+              </button>
+            </Magnetic>
           </div>
         </form>
       </motion.div>
@@ -743,9 +746,9 @@ const Footer = () => {
       <div className="footer-top">
         <div className="footer-logo interactive">Karl.</div>
         <div className="footer-socials">
-          <Magnetic strength={0.2}><a href="#" className="footer-social-btn interactive"><FiGithub size={20} /></a></Magnetic>
-          <Magnetic strength={0.2}><a href="#" className="footer-social-btn interactive"><FiLinkedin size={20} /></a></Magnetic>
-          <Magnetic strength={0.2}><a href="#" className="footer-social-btn interactive"><FaInstagram size={20} /></a></Magnetic>
+          <Magnetic strength={0.2}><a href="https://github.com/karl2603" className="footer-social-btn interactive"><FiGithub size={20} /></a></Magnetic>
+          <Magnetic strength={0.2}><a href="https://www.linkedin.com/in/karlarvindraj/" className="footer-social-btn interactive"><FiLinkedin size={20} /></a></Magnetic>
+          <Magnetic strength={0.2}><a href="https://www.instagram.com/_._karl_._/" className="footer-social-btn interactive"><FaInstagram size={20} /></a></Magnetic>
         </div>
       </div>
 
