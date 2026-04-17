@@ -45,6 +45,30 @@ const Magnetic = ({ children, strength = 0.15 }) => {
   );
 };
 
+const TextReveal = ({ children, delayOffset = 0 }) => {
+  const words = children.split(" ");
+  return (
+    <span className="text-reveal-container">
+      {words.map((word, index) => (
+        <span key={index} className="word-mask">
+          <motion.span
+            variants={{
+              hidden: { y: "100%", rotate: 2, opacity: 0 },
+              visible: { y: 0, rotate: 0, opacity: 1, transition: { duration: 1.2, ease, delay: delayOffset + index * 0.04 } }
+            }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="word-inner"
+          >
+            {word}&nbsp;
+          </motion.span>
+        </span>
+      ))}
+    </span>
+  );
+};
+
 // --- Ambient Background ---
 const AmbientBackground = () => (
   <div className="ambient-background">
@@ -183,7 +207,7 @@ const Hero = () => {
             transition={{ duration: 1, ease, delay: 0.3 }}
             className="hero-subtitle"
           >
-            I'm a 3rd-year Computer Science student and full-stack developer based in Chennai. I build robust Java backend architectures and pair them with pixel-perfect, highly interactive React frontends.
+            I design and build Software Applications that don’t break, from high performance React frontends to scalable Java backends.
           </motion.p>
           
           <motion.div 
@@ -201,7 +225,7 @@ const Hero = () => {
               </a>
             </Magnetic>
             <Magnetic strength={0.2}>
-              <a href="/resume.pdf" download="Resume.pdf" className="btn-outline interactive group">
+              <a href="/KarlResume.pdf" download="KarlResume.pdf" className="btn-outline interactive group">
                 <span className="btn-text">Download Resume</span>
                 <Download size={18} className="group-hover:translate-y-1 transition-transform" />
               </a>
@@ -215,10 +239,10 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease, delay: 0.2 }}
         >
-          <div className="hero-image-main interactive">
+          <div className="hero-image-main">
             <motion.img 
               style={{ y: yImage }}
-              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" 
+              src="./profile.jpg" 
               alt="Karl - Full Stack Developer" 
             />
             <div className="hero-image-overlay"></div>
@@ -241,20 +265,20 @@ const About = () => {
       >
         <div className="section-label">
           <span className="number">01</span>
-          <span className="label-text">The Philosophy</span>
+          <span className="label-text">About</span>
         </div>
         
         <div className="about-grid">
           <h2 className="about-headline">
-            Bridging academic rigor with <span className="italic-display text-muted">production-grade engineering.</span>
+            Turning complex ideas into <span className="italic-display text-muted">production grade systems.</span>
           </h2>
           
           <div className="about-content-right">
             <p className="about-paragraph">
-              Currently navigating my 3rd year of Computer Science, I view engineering not merely as writing scripts, but as crafting resilient systems. My methodology fuses low-level computational logic with bleeding-edge full-stack technologies to deliver products that dominate their category. 
+              I focus on building real world software that is reliable, scalable, and maintainable. I approach development as system design, not just coding, combining strong fundamentals with modern full-stack tools to create applications that perform consistently and handle real usage.
             </p>
             <p className="about-paragraph">
-              Whether architecting a distributed <span className="about-highlight">Spring Boot microservice</span>, designing relational database schemas, or choreographing a fluid <span className="about-highlight">React frontend</span>, my goal remains identical: absolute precision. Code that looks exceptional on the surface and performs flawlessly under intense operational pressure.
+              From designing scalable <span className="about-highlight">Spring Boot services</span> to building responsive <span className="about-highlight">React interfaces</span>, I focus on clean architecture and predictable performance. Every system I build is structured to be efficient, maintainable, and capable of handling growth without compromising stability.
             </p>
           </div>
         </div>
@@ -264,38 +288,58 @@ const About = () => {
 };
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "FinTech Enterprise Dashboard",
-      type: "Freelance",
-      description: "A highly secure, performant financial platform visualizing real-time data. Engineered with an immutable state management system and seamless API integration to ensure zero downtime and accurate financial reporting.",
-      tech: ["React", "Redux", "Spring Boot", "MySQL"],
-      category: "Full Stack",
-      year: "2024",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2370&auto=format&fit=crop"
-    },
-    {
-      title: "Aura Digital Experience",
-      type: "Personal Project",
-      description: "An Awwwards-caliber marketing site demonstrating complex DOM manipulation, Framer Motion animations, and scroll-triggered storytelling. Designed to push the boundaries of frontend performance and visual aesthetics.",
-      tech: ["JavaScript", "Tailwind CSS", "Vercel"],
-      category: "Frontend",
-      year: "2023",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
-    },
-    {
-      title: "Distributed Commerce API",
-      type: "Freelance",
-      description: "A robust backend microservice architecture handling authentication, inventory management, and ledger processing. Optimized for high concurrency, relational data integrity, and rapid scaling under heavy loads.",
-      tech: ["Java", "Spring Boot", "JDBC", "Render"],
-      category: "Backend Architecture",
-      year: "2023",
-      link: "#",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2668&auto=format&fit=crop"
-    }
-  ];
+ const projects = [
+  {
+    title: "Novaport AI Agent",
+    type: "Personal Project",
+    description: "An AI-powered assistant designed to streamline workflows and automate repetitive tasks. Built with a focus on real-time interaction, clean UI, and seamless integration with modern APIs to deliver a practical and responsive user experience.",
+    tech: ["React", "Tailwind CSS", "Python", "Gemini AI"],
+    category: "AI-Full Stack",
+    year: "2026",
+    link: "https://novaport-ai.vercel.app/",
+    image: "./Novaport.png"
+  },
+  {
+    title: "Crust & Crunch",
+    type: "Freelance Project",
+    description: "A modern, high-conversion website built for a cafe brand, focusing on visual appeal and user engagement. Designed and developed to enhance brand identity while ensuring smooth navigation and strong performance across devices.",
+    tech: ["React", "Tailwind CSS", "3D Animated", "React Forms", "Vercel"],
+    category: "Frontend",
+    year: "2026",
+    link: "https://crust-and-crunch.vercel.app/",
+    image: "./CrustCrunch.png"
+  },
+  {
+    title: "MindCare Clinic",
+    type: "Freelance Project",
+    description: "A professional website developed for a therapy clinic, focusing on trust, accessibility, and user comfort. Designed to present services clearly while maintaining a calm and structured user experience.",
+    tech: ["React", "React Forms", "Netlify"],
+    category: "Frontend",
+    year: "2026",
+    link: "https://happymindcare.in/",
+    image: "./Mindcare.png"
+  },
+  {
+    title: "Task Flow",
+    type: "Personal Project",
+    description: "A productivity-focused task management application built to organize workflows efficiently. Features a clean interface, intuitive interactions, and structured state management to ensure reliability and ease of use.",
+    tech: ["React", "React Router", "CSS"],
+    category: "Frontend",
+    year: "2025",
+    link: "https://task-flow-phi-eight.vercel.app/",
+    image: "./Taskflow.png"
+  },
+  {
+    title: "GitHub Explorer",
+    type: "Personal Project",
+    description: "A dynamic web application that fetches and visualizes GitHub user data using external APIs. Built with Axios for efficient data handling and designed to provide quick insights into repositories and activity.",
+    tech: ["React", "Axios", "GitHub API"],
+    category: "Frontend",
+    year: "2025",
+    link: "https://git-hub-explorer-psi.vercel.app/",
+    image: "./GithubExpo.png"
+  }
+];
 
   return (
     <section className="projects-section" id="work">
@@ -308,7 +352,7 @@ const Projects = () => {
       >
         <div className="section-label">
           <span className="number">02</span>
-          <span className="label-text">Selected Work</span>
+          <span className="label-text">Projects</span>
         </div>
       </motion.div>
       <div className="projects-stack">
@@ -344,7 +388,7 @@ const Projects = () => {
                 </div>
                 <Magnetic strength={0.1}>
                   <a href={project.link} className="project-link interactive group">
-                    View Case Study <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    View  <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </Magnetic>
               </div>
