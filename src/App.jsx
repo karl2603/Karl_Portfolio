@@ -83,7 +83,7 @@ const CustomCursor = () => {
     
     const handleMouseOver = (e) => {
       const target = e.target;
-      if (target.closest('.hero-image-main')) setCursorState('hidden');
+      if (target.closest('.hero-image-main')) setCursorState('default');
       else if (target.closest('.project-card')) setCursorState('view');
       else if (target.tagName.toLowerCase() === 'a' || target.tagName.toLowerCase() === 'button' || target.closest('.interactive')) setCursorState('hover');
       else setCursorState('default');
@@ -168,7 +168,7 @@ const Navbar = () => {
             </Magnetic>
           ))}
           <Magnetic strength={0.8}>
-            <a href="#contact" className="nav-btn interactive">
+            <a href="https://forms.gle/hDzDzdS4Ty5shrM37" className="nav-btn interactive">
               <div className="btn-inner">Start Project</div>
             </a>
           </Magnetic>
@@ -185,10 +185,10 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <motion.div 
             className="mobile-menu-overlay"
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            transition={{ duration: 0.5, ease }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease }}
           >
             <div className="mobile-menu-bg-text">KARL</div>
             <div className="mobile-menu-content">
@@ -200,7 +200,6 @@ const Navbar = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                     initial={{ opacity: 0, y: 40, rotate: 2 }}
                     animate={{ opacity: 1, y: 0, rotate: 0 }}
-                    exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
                     transition={{ duration: 0.8, ease, delay: 0.1 + i * 0.1 }}
                   >
                     {item}
@@ -210,7 +209,6 @@ const Navbar = () => {
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.8, ease, delay: 0.1 + navItems.length * 0.1 }}
                 className="mobile-btn-wrapper"
               >
