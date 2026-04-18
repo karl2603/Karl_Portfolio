@@ -1,22 +1,19 @@
-/* App.jsx */
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ArrowRight, Download, Check } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Download, Check, Menu, X } from 'lucide-react';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { FaJava, FaInstagram, FaHtml5, FaCss3Alt } from 'react-icons/fa';
-import {
-  SiC, SiPython, SiJavascript, SiReact,
-  SiReactrouter, SiRedux, SiTailwindcss, SiSpringboot,
-  SiMysql, SiNpm, SiGit, SiGithub, SiNotion, SiVercel,
-  SiNetlify, SiRender
+import { 
+  SiC, SiPython, SiJavascript, SiReact, 
+  SiReactrouter, SiRedux, SiTailwindcss, SiSpringboot, 
+  SiMysql, SiNpm, SiGit, SiGithub, SiNotion, SiVercel, 
+  SiNetlify, SiRender 
 } from 'react-icons/si';
 import './App.css';
 
-// --- Premium Easing Curves ---
 const ease = [0.16, 1, 0.3, 1];
 const transition = { duration: 1.2, ease };
 
-// --- Advanced Micro-Interactions ---
 const Magnetic = ({ children, strength = 0.15 }) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -69,7 +66,6 @@ const TextReveal = ({ children, delayOffset = 0 }) => {
   );
 };
 
-// --- Ambient Background ---
 const AmbientBackground = () => (
   <div className="ambient-background">
     <div className="noise-overlay"></div>
@@ -78,17 +74,17 @@ const AmbientBackground = () => (
   </div>
 );
 
-// --- Custom Mouse Cursor ---
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorState, setCursorState] = useState('default');
 
   useEffect(() => {
     const updateMousePosition = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
-
+    
     const handleMouseOver = (e) => {
       const target = e.target;
-      if (target.closest('.project-card')) setCursorState('view');
+      if (target.closest('.hero-image-main')) setCursorState('hidden');
+      else if (target.closest('.project-card')) setCursorState('view');
       else if (target.tagName.toLowerCase() === 'a' || target.tagName.toLowerCase() === 'button' || target.closest('.interactive')) setCursorState('hover');
       else setCursorState('default');
     };
@@ -105,7 +101,8 @@ const CustomCursor = () => {
   const variants = {
     default: { width: 16, height: 16, x: mousePosition.x - 8, y: mousePosition.y - 8, opacity: 1, backgroundColor: "#fff" },
     hover: { width: 64, height: 64, x: mousePosition.x - 32, y: mousePosition.y - 32, opacity: 1, backgroundColor: "#fff", scale: 1.2 },
-    view: { width: 80, height: 80, x: mousePosition.x - 40, y: mousePosition.y - 40, opacity: 1, backgroundColor: "#fff" }
+    view: { width: 80, height: 80, x: mousePosition.x - 40, y: mousePosition.y - 40, opacity: 1, backgroundColor: "#fff" },
+    hidden: { opacity: 0, width: 0, height: 0 }
   };
 
   return (
@@ -117,9 +114,9 @@ const CustomCursor = () => {
     >
       <AnimatePresence>
         {cursorState === 'view' && (
-          <motion.span
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.5 }} 
+            animate={{ opacity: 1, scale: 1 }} 
             exit={{ opacity: 0, scale: 0.5 }}
             className="cursor-text"
           >
@@ -131,10 +128,9 @@ const CustomCursor = () => {
   );
 };
 
-// --- Section Components ---
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -142,31 +138,107 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
+
+  const navItems = ['About', 'Projects', 'Services', 'Pricing', 'Stack'];
+
   return (
-    <motion.nav
-      className={`navbar ${scrolled ? 'scrolled' : ''}`}
-      initial={{ y: "-100%" }}
-      animate={{ y: 0 }}
-      transition={{ duration: 1.2, ease }}
-    >
-      <Magnetic>
-        <div className="nav-logo interactive">Karl</div>
-      </Magnetic>
-      <div className="nav-links">
-        {['About', 'Projects', 'Services', 'Pricing', 'Skills'].map((item) => (
-          <Magnetic key={item} strength={0.3}>
-            <a href={`#${item.toLowerCase()}`} className="nav-link interactive">
-              {item}
+    <>
+      <motion.nav 
+        className={`navbar ${scrolled ? 'scrolled' : ''}`}
+        initial={{ y: "-100%" }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1.2, ease }}
+      >
+        <Magnetic>
+          <div className="nav-logo interactive">Karl</div>
+        </Magnetic>
+        <div className="nav-links desktop-nav">
+          {navItems.map((item) => (
+            <Magnetic key={item} strength={0.3}>
+              <a href={`#${item.toLowerCase()}`} className="nav-link interactive">
+                {item}
+              </a>
+            </Magnetic>
+          ))}
+          <Magnetic strength={0.8}>
+            <a href="#contact" className="nav-btn interactive">
+              <div className="btn-inner">Start Project</div>
             </a>
           </Magnetic>
-        ))}
-        <Magnetic strength={0.8}>
-          <a href="https://forms.gle/hDzDzdS4Ty5shrM37" className="nav-btn interactive">
-            <div className="btn-inner">Start Project</div>
-          </a>
-        </Magnetic>
-      </div>
-    </motion.nav>
+        </div>
+        <button 
+          className="mobile-menu-btn interactive"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </motion.nav>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="mobile-menu-overlay"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.5, ease }}
+          >
+            <div className="mobile-menu-bg-text">KARL</div>
+            <div className="mobile-menu-content">
+              {navItems.map((item, i) => (
+                <div key={item} className="mobile-nav-link-wrapper">
+                  <motion.a
+                    href={`#${item.toLowerCase()}`}
+                    className="mobile-nav-link interactive"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    initial={{ opacity: 0, y: 40, rotate: 2 }}
+                    animate={{ opacity: 1, y: 0, rotate: 0 }}
+                    exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+                    transition={{ duration: 0.8, ease, delay: 0.1 + i * 0.1 }}
+                  >
+                    {item}
+                  </motion.a>
+                </div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.8, ease, delay: 0.1 + navItems.length * 0.1 }}
+                className="mobile-btn-wrapper"
+              >
+                <a
+                  href="#contact"
+                  className="btn-primary interactive"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <span className="btn-text">Start Project</span>
+                </a>
+              </motion.div>
+            </div>
+            <div className="mobile-menu-footer">
+              <motion.div 
+                className="social-links"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+              >
+                <a href="https://github.com/karl2603" className="interactive"><FiGithub size={24} /></a>
+                <a href="https://www.linkedin.com/in/karlarvindraj/" className="interactive"><FiLinkedin size={24} /></a>
+                <a href="https://www.instagram.com/_._karl_._/" className="interactive"><FaInstagram size={24} /></a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -174,34 +246,44 @@ const Hero = () => {
   const { scrollY } = useScroll();
   const yText = useTransform(scrollY, [0, 1000], [0, 200]);
   const yImage = useTransform(scrollY, [0, 1000], [0, -100]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <section className="hero" id="home">
       <div className="hero-container">
-        <motion.div className="hero-content" style={{ y: yText }}>
-
+        <motion.div className="hero-content" style={{ y: isMobile ? 0 : yText }}>
+          
           <h1 className="hero-title">
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+            <motion.span 
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 1, ease }}
               style={{ display: 'inline-block' }}
             >
               Karl
             </motion.span>
-            <br />
-            <motion.span
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease, delay: 0.1 }}
+            <br/>
+            <motion.span 
+              initial={{ opacity: 0, y: 30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 1, ease, delay: 0.1 }} 
               className="italic-display text-muted"
               style={{ display: 'inline-block' }}
             >
               Full Stack Developer.
             </motion.span>
           </h1>
-
-          <motion.p
+          
+          <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.3 }}
@@ -209,8 +291,8 @@ const Hero = () => {
           >
             I design and build Software Applications that don’t break, from high performance React frontends to scalable Java backends.
           </motion.p>
-
-          <motion.div
+          
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.4 }}
@@ -233,17 +315,17 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div
+        <motion.div 
           className="hero-visuals"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease, delay: 0.2 }}
         >
           <div className="hero-image-main">
-            <motion.img
-              style={{ y: yImage }}
-              src="./profile.jpg"
-              alt="Karl - Full Stack Developer"
+            <motion.img 
+              style={{ y: isMobile ? 0 : yImage }}
+              src="./profile.jpg" 
+              alt="Karl - Full Stack Developer" 
             />
             <div className="hero-image-overlay"></div>
           </div>
@@ -256,7 +338,7 @@ const Hero = () => {
 const About = () => {
   return (
     <section className="about" id="about">
-      <motion.div
+       <motion.div 
         className="about-wrapper"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -267,12 +349,12 @@ const About = () => {
           <span className="number">01</span>
           <span className="label-text">About</span>
         </div>
-
+        
         <div className="about-grid">
           <h2 className="about-headline">
             Turning complex ideas into <span className="italic-display text-muted">production grade systems.</span>
           </h2>
-
+          
           <div className="about-content-right">
             <p className="about-paragraph">
               I focus on building real world software that is reliable, scalable, and maintainable. I approach development as system design, not just coding, combining strong fundamentals with modern full-stack tools to create applications that perform consistently and handle real usage.
@@ -343,7 +425,7 @@ const Projects = () => {
 
   return (
     <section className="projects-section" id="work">
-      <motion.div
+      <motion.div 
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -357,7 +439,7 @@ const Projects = () => {
       </motion.div>
       <div className="projects-stack">
         {projects.map((project, index) => (
-          <motion.div
+          <motion.div 
             key={index}
             className="project-card interactive"
             initial={{ opacity: 0, y: 60 }}
@@ -370,7 +452,7 @@ const Projects = () => {
                 <img src={project.image} alt={project.title} className="project-image" />
               </div>
             </div>
-
+            
             <div className="project-info">
               <div className="project-meta">
                 <span className="project-category">{project.category}</span>
@@ -381,7 +463,7 @@ const Projects = () => {
                 <span className="project-type-indicator">[{project.type}]</span>
               </div>
               <p className="project-desc">{project.description}</p>
-
+              
               <div className="project-footer">
                 <div className="project-tech">
                   {project.tech.map((t, i) => <span key={i}>{t}</span>)}
@@ -421,22 +503,22 @@ const Services = () => {
 
   return (
     <section className="services" id="services">
-      <motion.div
+      <motion.div 
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={transition}
       >
-        <div className="section-label">
+         <div className="section-label">
           <span className="number">03</span>
           <span className="label-text">Core Expertise</span>
         </div>
       </motion.div>
-
+      
       <div className="services-list">
         {services.map((service, index) => (
-          <motion.div
+          <motion.div 
             key={index}
             className="service-row interactive group"
             initial={{ opacity: 0, y: 40 }}
@@ -487,7 +569,7 @@ const Pricing = () => {
 
   return (
     <section className="pricing" id="pricing">
-      <motion.div
+      <motion.div 
         className="section-header center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -502,7 +584,7 @@ const Pricing = () => {
 
       <div className="pricing-grid">
         {tiers.map((tier, index) => (
-          <motion.div
+          <motion.div 
             key={index}
             className={`pricing-card interactive ${tier.highlight ? 'highlight' : ''}`}
             initial={{ opacity: 0, y: 40 }}
@@ -538,55 +620,55 @@ const Pricing = () => {
 
 const TechStack = () => {
   const stack = [
-    {
-      category: "Programming Languages",
+    { 
+      category: "Programming Languages", 
       items: [
-        { name: "C", icon: <SiC color="#A8B9CC" /> },
-        { name: "Python", icon: <SiPython color="#3776AB" /> },
+        { name: "C", icon: <SiC color="#A8B9CC" /> }, 
+        { name: "Python", icon: <SiPython color="#3776AB" /> }, 
         { name: "Java", icon: <FaJava color="#007396" /> }
-      ]
+      ] 
     },
-    {
-      category: "Backend & Database",
+    { 
+      category: "Backend & Database", 
       items: [
-        { name: "Java", icon: <FaJava color="#007396" /> },
+        { name: "Java", icon: <FaJava color="#007396" /> }, 
         { name: "MySQL", icon: <SiMysql color="#4479A1" /> },
-        { name: "JDBC", icon: <FaJava className="opacity-60" /> },
+        { name: "JDBC", icon: <FaJava className="opacity-60" /> }, 
         { name: "Spring Boot", icon: <SiSpringboot color="#6DB33F" /> }
-      ]
+      ] 
     },
-    {
-      category: "Frontend Ecosystem",
+    { 
+      category: "Frontend Ecosystem", 
       items: [
-        { name: "HTML5", icon: <FaHtml5 color="#E34F26" /> },
-        { name: "CSS3", icon: <FaCss3Alt color="#1572B6" /> },
-        { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
-        { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> },
-        { name: "React Router", icon: <SiReactrouter color="#CA4245" /> },
-        { name: "Redux", icon: <SiRedux color="#764ABC" /> },
+        { name: "HTML5", icon: <FaHtml5 color="#E34F26" /> }, 
+        { name: "CSS3", icon: <FaCss3Alt color="#1572B6" /> }, 
+        { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> }, 
+        { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> }, 
+        { name: "React Router", icon: <SiReactrouter color="#CA4245" /> }, 
+        { name: "Redux", icon: <SiRedux color="#764ABC" /> }, 
         { name: "Tailwind CSS", icon: <SiTailwindcss color="#06B6D4" /> }
-      ]
+      ] 
     },
-    {
-      category: "Tools & Deployment",
+    { 
+      category: "Tools & Deployment", 
       items: [
-        { name: "NPM", icon: <SiNpm color="#CB3837" /> },
-        { name: "Git", icon: <SiGit color="#F05032" /> },
-        { name: "GitHub", icon: <SiGithub color="#FFFFFF" /> },
-        { name: "Notion", icon: <SiNotion color="#FFFFFF" /> },
-        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> },
-        { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> },
+        { name: "NPM", icon: <SiNpm color="#CB3837" /> }, 
+        { name: "Git", icon: <SiGit color="#F05032" /> }, 
+        { name: "GitHub", icon: <SiGithub color="#FFFFFF" /> }, 
+        { name: "Notion", icon: <SiNotion color="#FFFFFF" /> }, 
+        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> }, 
+        { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> }, 
         { name: "Render", icon: <SiRender color="#46E3B7" /> }
-      ]
+      ] 
     }
   ];
 
   const handleMouseMove = (e) => {
     const cards = document.querySelectorAll('.bento-box');
-    for (const card of cards) {
+    for(const card of cards) {
       const rect = card.getBoundingClientRect(),
-        x = e.clientX - rect.left,
-        y = e.clientY - rect.top;
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top;
       card.style.setProperty("--mouse-x", `${x}px`);
       card.style.setProperty("--mouse-y", `${y}px`);
     }
@@ -594,7 +676,7 @@ const TechStack = () => {
 
   return (
     <section className="tech-stack" id="stack" onMouseMove={handleMouseMove}>
-      <motion.div
+       <motion.div 
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -609,7 +691,7 @@ const TechStack = () => {
 
       <div className="bento-stack-grid">
         {stack.map((group, index) => (
-          <motion.div
+          <motion.div 
             key={index}
             className="bento-box interactive"
             initial={{ opacity: 0, y: 40 }}
@@ -642,7 +724,7 @@ const Experience = () => {
 
   return (
     <section className="experience" id="experience">
-      <motion.div
+      <motion.div 
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -657,8 +739,8 @@ const Experience = () => {
 
       <div className="experience-list">
         {experiences.map((exp, index) => (
-          <motion.div
-            key={index}
+          <motion.div 
+            key={index} 
             className="experience-item interactive group"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -682,9 +764,36 @@ const Experience = () => {
 };
 
 const Contact = () => {
+  const [status, setStatus] = useState('');
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const response = await fetch('https://formspree.io/f/xpqkrwqr', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        setStatus('success');
+        form.reset();
+        setTimeout(() => setStatus(''), 3000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus(''), 3000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus(''), 3000);
+    }
+  };
+
   return (
     <section className="contact" id="contact">
-      <motion.div
+      <motion.div 
         className="contact-wrapper interactive"
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -708,29 +817,31 @@ const Contact = () => {
           </div>
         </div>
 
-        <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+        <form className="contact-form" onSubmit={handleFormSubmit}>
           <div className="input-row">
             <div className="input-group">
-              <input type="text" id="name" required className="interactive" placeholder=" " />
+              <input type="text" id="name" name="name" required className="interactive" placeholder=" " />
               <label htmlFor="name">Name</label>
               <div className="input-line"></div>
             </div>
             <div className="input-group">
-              <input type="email" id="email" required className="interactive" placeholder=" " />
+              <input type="email" id="email" name="email" required className="interactive" placeholder=" " />
               <label htmlFor="email">Email</label>
               <div className="input-line"></div>
             </div>
           </div>
           <div className="input-group">
-            <textarea id="message" required rows="1" className="interactive" placeholder=" "></textarea>
+            <textarea id="message" name="message" required rows="1" className="interactive" placeholder=" "></textarea>
             <label htmlFor="message">Project Details</label>
             <div className="input-line"></div>
           </div>
           <div className="submit-btn-wrapper">
             <Magnetic strength={0.8}>
-              <button type="submit" className="btn-primary interactive group">
-                <span className="btn-text">Send Message</span>
-                <ArrowRight size={18} className="arrow-icon" color="#000" />
+              <button type="submit" className="btn-primary interactive group" disabled={status === 'sending'}>
+                <span className="btn-text">
+                  {status === 'sending' ? 'Sending...' : status === 'success' ? 'Message Sent!' : 'Send Message'}
+                </span>
+                {status !== 'success' && <ArrowRight size={18} className="arrow-icon" color="#000" />}
               </button>
             </Magnetic>
           </div>
