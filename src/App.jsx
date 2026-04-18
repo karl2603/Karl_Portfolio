@@ -161,7 +161,7 @@ const Navbar = () => {
           </Magnetic>
         ))}
         <Magnetic strength={0.8}>
-          <a href="#contact" className="nav-btn interactive">
+          <a href="https://forms.gle/hDzDzdS4Ty5shrM37" className="nav-btn interactive">
             <div className="btn-inner">Start Project</div>
           </a>
         </Magnetic>
@@ -525,7 +525,7 @@ const Pricing = () => {
               ))}
             </div>
             <Magnetic strength={0.4}>
-              <a href="https://forms.gle/YOUR_GOOGLE_FORM_LINK" target="_blank" rel="noopener noreferrer" className={`pricing-btn interactive ${tier.highlight ? 'btn-primary' : 'btn-outline'}`}>
+              <a href="https://forms.gle/hDzDzdS4Ty5shrM37" target="_blank" rel="noopener noreferrer" className={`pricing-btn interactive ${tier.highlight ? 'btn-primary' : 'btn-outline'}`}>
                 <span className="btn-text">Get Started</span>
               </a>
             </Magnetic>
@@ -635,9 +635,9 @@ const TechStack = () => {
 
 const Experience = () => {
   const experiences = [
-    { year: "Feb 2026 - Present", role: "Web Developer", company: "Freelance", desc: "Working with clients to design and build responsive, high-performance websites and web applications. Focused on clean UI, reliable backend integration, and delivering production-ready solutions tailored to real business needs."},
-    { year: "Dec 2024 - Jan 2025", role: "Frontend Developer Intern", company: "CodeBind Technologies", desc: "Contributed to frontend development using React, improving UI consistency and performance. Worked with reusable components, handled state management, and collaborated on building responsive and maintainable interfaces."},
-    { year: "Aug 2023 - Present", role: "Computer Science Student", company: "SRM University", desc: "Pursuing a degree in Computer Science with a focus on core programming, data structures, and system design. Building practical projects to apply concepts in real-world scenarios and strengthen problem-solving skills."}
+    { year: "Feb 2026 - Present", role: "Web Developer", company: "Freelance", desc: "Working with clients to design and build responsive, high-performance websites and web applications. Focused on clean UI, reliable backend integration, and delivering production-ready solutions tailored to real business needs." },
+    { year: "Dec 2024 - Jan 2025", role: "Frontend Developer Intern", company: "CodeBind Technologies", desc: "Contributed to frontend development using React, improving UI consistency and performance. Worked with reusable components, handled state management, and collaborated on building responsive and maintainable interfaces." },
+    { year: "Aug 2023 - Present", role: "Computer Science Student", company: "SRM University", desc: "Pursuing a degree in Computer Science with a focus on core programming, data structures, and system design. Building practical projects to apply concepts in real-world scenarios and strengthen problem-solving skills." }
   ];
 
   return (
@@ -746,9 +746,9 @@ const Footer = () => {
       <div className="footer-top">
         <div className="footer-logo interactive">Karl.</div>
         <div className="footer-socials">
-          <Magnetic strength={0.2}><a href="https://github.com/karl2603" className="footer-social-btn interactive"><FiGithub size={20} /></a></Magnetic>
-          <Magnetic strength={0.2}><a href="https://www.linkedin.com/in/karlarvindraj/" className="footer-social-btn interactive"><FiLinkedin size={20} /></a></Magnetic>
-          <Magnetic strength={0.2}><a href="https://www.instagram.com/_._karl_._/" className="footer-social-btn interactive"><FaInstagram size={20} /></a></Magnetic>
+          <Magnetic strength={0.6}><a href="https://github.com/karl2603" className="footer-social-btn interactive"><FiGithub size={20} /></a></Magnetic>
+          <Magnetic strength={0.6}><a href="https://www.linkedin.com/in/karlarvindraj/" className="footer-social-btn interactive"><FiLinkedin size={20} /></a></Magnetic>
+          <Magnetic strength={0.6}><a href="https://www.instagram.com/_._karl_._/" className="footer-social-btn interactive"><FaInstagram size={20} /></a></Magnetic>
         </div>
       </div>
 
