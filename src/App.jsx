@@ -146,7 +146,7 @@ const Navbar = () => {
     }
   }, [isMobileMenuOpen]);
 
-  const navItems = ['About', 'Projects', 'Services', 'Pricing', 'Stack'];
+  const navItems = ['About', 'Projects', 'Services', 'Pricing', 'Skills'];
 
   return (
     <>
