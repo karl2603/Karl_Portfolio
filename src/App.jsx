@@ -17,6 +17,11 @@ const transition = { duration: 1.2, ease };
 const Magnetic = ({ children, strength = 0.15 }) => {
   const ref = useRef(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const isTouchDevice = typeof window !== 'undefined' && window.matchMedia("(pointer: coarse)").matches;
+
+  if (isTouchDevice) {
+    return <div className="magnetic-wrapper">{children}</div>;
+  }
 
   const handleMouse = (e) => {
     const { clientX, clientY } = e;
@@ -77,8 +82,14 @@ const AmbientBackground = () => (
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorState, setCursorState] = useState('default');
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsTouchDevice(true);
+      return; 
+    }
+
     const updateMousePosition = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
     
     const handleMouseOver = (e) => {
@@ -97,6 +108,8 @@ const CustomCursor = () => {
       window.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   const variants = {
     default: { width: 16, height: 16, x: mousePosition.x - 8, y: mousePosition.y - 8, opacity: 1, backgroundColor: "#fff" },
@@ -447,7 +460,7 @@ const Projects = () => {
           >
             <div className="project-image-container">
               <div className="project-image-wrapper">
-                <img src={project.image} alt={project.title} className="project-image" />
+                <img src={project.image} alt={project.title} className="project-image" loading="lazy" />
               </div>
             </div>
             
@@ -662,6 +675,8 @@ const TechStack = () => {
   ];
 
   const handleMouseMove = (e) => {
+    if (window.innerWidth <= 768) return; 
+
     const cards = document.querySelectorAll('.bento-box');
     for(const card of cards) {
       const rect = card.getBoundingClientRect(),

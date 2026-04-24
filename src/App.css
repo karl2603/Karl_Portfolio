@@ -1260,6 +1260,20 @@ section {
 }
 
 @media (max-width: 768px) {
+  .noise-overlay {
+    display: none !important;
+  }
+
+  .glow-orb {
+    filter: blur(60px); 
+    opacity: 0.04;
+  }
+
+  .bento-box {
+    backdrop-filter: none;
+    background: rgba(18, 18, 20, 0.95); 
+  }
+
   section { padding: 80px 5vw; }
   .input-row { flex-direction: column; gap: 40px; }
   .desktop-nav { display: none !important; }
