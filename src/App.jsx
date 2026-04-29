@@ -9,6 +9,7 @@ import {
   SiMysql, SiNpm, SiGit, SiGithub, SiNotion, SiVercel, 
   SiNetlify, SiRender 
 } from 'react-icons/si';
+import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 
 const ease = [0.16, 1, 0.3, 1];
@@ -901,6 +902,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <Analytics/>
     </div>
   );
 }
