@@ -160,7 +160,13 @@ const Navbar = () => {
     }
   }, [isMobileMenuOpen]);
 
-  const navItems = ['About', 'Projects', 'Services', 'Pricing', 'Skills'];
+  const navItems = [
+    { label: 'About', id: 'about' },
+    { label: 'Projects', id: 'work' },
+    { label: 'Services', id: 'services' },
+    { label: 'Pricing', id: 'pricing' },
+    { label: 'Skills', id: 'stack' }
+  ];
 
   return (
     <>
@@ -171,13 +177,13 @@ const Navbar = () => {
         transition={{ duration: 1.2, ease }}
       >
         <Magnetic>
-          <div className="nav-logo interactive">Karl</div>
+          <div className="nav-logo interactive"><a href='#home'>Karl</a></div>
         </Magnetic>
         <div className="nav-links desktop-nav">
           {navItems.map((item) => (
-            <Magnetic key={item} strength={0.3}>
-              <a href={`#${item.toLowerCase()}`} className="nav-link interactive">
-                {item}
+            <Magnetic key={item.id} strength={0.3}>
+              <a href={`#${item.id}`} className="nav-link interactive">
+                {item.label}
               </a>
             </Magnetic>
           ))}
@@ -207,16 +213,16 @@ const Navbar = () => {
             <div className="mobile-menu-bg-text">KARL</div>
             <div className="mobile-menu-content">
               {navItems.map((item, i) => (
-                <div key={item} className="mobile-nav-link-wrapper">
+                <div key={item.id} className="mobile-nav-link-wrapper">
                   <motion.a
-                    href={`#${item.toLowerCase()}`}
+                    href={`#${item.id}`}
                     className="mobile-nav-link interactive"
                     onClick={() => setIsMobileMenuOpen(false)}
                     initial={{ opacity: 0, y: 40, rotate: 2 }}
                     animate={{ opacity: 1, y: 0, rotate: 0 }}
                     transition={{ duration: 0.8, ease, delay: 0.1 + i * 0.1 }}
                   >
-                    {item}
+                    {item.label}
                   </motion.a>
                 </div>
               ))}
