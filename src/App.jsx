@@ -4,11 +4,13 @@ import { ArrowUpRight, ArrowRight, Download, Check, Menu, X } from 'lucide-react
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { FaJava, FaInstagram, FaHtml5, FaCss3Alt } from 'react-icons/fa';
 import { 
-  SiC, SiPython, SiJavascript, SiReact, 
-  SiReactrouter, SiRedux, SiTailwindcss, SiSpringboot, 
-  SiMysql, SiNpm, SiGit, SiGithub, SiNotion, SiVercel, 
-  SiNetlify, SiRender 
+  SiC, SiJavascript, SiReact, 
+  SiReactrouter, SiTailwindcss, SiSpringboot, SiSpringsecurity,
+  SiJsonwebtokens, SiMysql, SiNpm, SiGit, SiGithub, SiVercel, 
+  SiNetlify, SiRender, SiPostman, SiIntellijidea
 } from 'react-icons/si';
+import { VscVscode } from 'react-icons/vsc';
+import { TbApi } from 'react-icons/tb';
 import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 
@@ -641,18 +643,21 @@ const TechStack = () => {
     { 
       category: "Programming Languages", 
       items: [
-        { name: "C", icon: <SiC color="#A8B9CC" /> }, 
-        { name: "Python", icon: <SiPython color="#3776AB" /> }, 
-        { name: "Java", icon: <FaJava color="#007396" /> }
+        { name: "Java", icon: <FaJava color="#007396" /> },
+        { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
+        { name: "C", icon: <SiC color="#A8B9CC" /> }
       ] 
     },
     { 
       category: "Backend & Database", 
       items: [
-        { name: "Java", icon: <FaJava color="#007396" /> }, 
-        { name: "MySQL", icon: <SiMysql color="#4479A1" /> },
-        { name: "JDBC", icon: <FaJava className="opacity-60" /> }, 
-        { name: "Spring Boot", icon: <SiSpringboot color="#6DB33F" /> }
+        { name: "Java", icon: <FaJava color="#007396" /> },
+        { name: "Spring Boot", icon: <SiSpringboot color="#6DB33F" /> },
+        { name: "Spring Security", icon: <SiSpringsecurity color="#6DB33F" /> },
+        { name: "REST API", icon: <TbApi color="#FFFFFF" /> },
+        { name: "JWT", icon: <SiJsonwebtokens color="#D63AFF" /> },
+        { name: "JDBC", icon: <FaJava className="opacity-60" /> },
+        { name: "MySQL", icon: <SiMysql color="#4479A1" /> }
       ] 
     },
     { 
@@ -663,17 +668,18 @@ const TechStack = () => {
         { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> }, 
         { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> }, 
         { name: "React Router", icon: <SiReactrouter color="#CA4245" /> }, 
-        { name: "Redux", icon: <SiRedux color="#764ABC" /> }, 
         { name: "Tailwind CSS", icon: <SiTailwindcss color="#06B6D4" /> }
       ] 
     },
     { 
       category: "Tools & Deployment", 
       items: [
-        { name: "NPM", icon: <SiNpm color="#CB3837" /> }, 
         { name: "Git", icon: <SiGit color="#F05032" /> }, 
         { name: "GitHub", icon: <SiGithub color="#FFFFFF" /> }, 
-        { name: "Notion", icon: <SiNotion color="#FFFFFF" /> }, 
+        { name: "VS Code", icon: <VscVscode color="#007ACC" /> },
+        { name: "IntelliJ IDEA", icon: <SiIntellijidea color="#FE315D" /> },
+        { name: "Postman", icon: <SiPostman color="#FF6C37" /> },
+        { name: "NPM", icon: <SiNpm color="#CB3837" /> }, 
         { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> }, 
         { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> }, 
         { name: "Render", icon: <SiRender color="#46E3B7" /> }
