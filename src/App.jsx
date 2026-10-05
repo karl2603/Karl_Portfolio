@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'fra
 import { ArrowUpRight, ArrowRight, Download, Check, Menu, X } from 'lucide-react';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { FaJava, FaInstagram, FaHtml5, FaCss3Alt } from 'react-icons/fa';
-import { 
-  SiC, SiJavascript, SiReact, 
+import {
+  SiC, SiJavascript, SiReact,
   SiReactrouter, SiTailwindcss, SiSpringboot, SiSpringsecurity,
-  SiJsonwebtokens, SiMysql, SiNpm, SiGit, SiGithub, SiVercel, 
+  SiJsonwebtokens, SiMysql, SiNpm, SiGit, SiGithub, SiVercel,
   SiNetlify, SiRender, SiPostman, SiIntellijidea
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
@@ -90,11 +90,11 @@ const CustomCursor = () => {
   useEffect(() => {
     if (window.matchMedia("(pointer: coarse)").matches) {
       setIsTouchDevice(true);
-      return; 
+      return;
     }
 
     const updateMousePosition = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
-    
+
     const handleMouseOver = (e) => {
       const target = e.target;
       if (target.closest('.hero-image-main')) setCursorState('default');
@@ -130,9 +130,9 @@ const CustomCursor = () => {
     >
       <AnimatePresence>
         {cursorState === 'view' && (
-          <motion.span 
-            initial={{ opacity: 0, scale: 0.5 }} 
-            animate={{ opacity: 1, scale: 1 }} 
+          <motion.span
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.5 }}
             className="cursor-text"
           >
@@ -172,7 +172,7 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.nav 
+      <motion.nav
         className={`navbar ${scrolled ? 'scrolled' : ''}`}
         initial={{ y: "-100%" }}
         animate={{ y: 0 }}
@@ -195,7 +195,7 @@ const Navbar = () => {
             </a>
           </Magnetic>
         </div>
-        <button 
+        <button
           className="mobile-menu-btn interactive"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -205,7 +205,7 @@ const Navbar = () => {
 
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             className="mobile-menu-overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -244,7 +244,7 @@ const Navbar = () => {
               </motion.div>
             </div>
             <div className="mobile-menu-footer">
-              <motion.div 
+              <motion.div
                 className="social-links"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -281,29 +281,29 @@ const Hero = () => {
     <section className="hero" id="home">
       <div className="hero-container">
         <motion.div className="hero-content" style={{ y: isMobile ? 0 : yText }}>
-          
+
           <h1 className="hero-title">
-            <motion.span 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
+            <motion.span
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease }}
               style={{ display: 'inline-block' }}
             >
               Karl
             </motion.span>
-            <br/>
-            <motion.span 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 1, ease, delay: 0.1 }} 
+            <br />
+            <motion.span
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease, delay: 0.1 }}
               className="italic-display text-muted"
               style={{ display: 'inline-block' }}
             >
               Full Stack Developer.
             </motion.span>
           </h1>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.3 }}
@@ -311,8 +311,8 @@ const Hero = () => {
           >
             I design and build Software Applications that don’t break, from high performance React frontends to scalable Java backends.
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.4 }}
@@ -335,17 +335,17 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="hero-visuals"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease, delay: 0.2 }}
         >
           <div className="hero-image-main">
-            <motion.img 
+            <motion.img
               style={{ y: isMobile ? 0 : yImage }}
-              src="./profile.jpg" 
-              alt="Karl - Full Stack Developer" 
+              src="./profile.jpg"
+              alt="Karl - Full Stack Developer"
             />
             <div className="hero-image-overlay"></div>
           </div>
@@ -358,7 +358,7 @@ const Hero = () => {
 const About = () => {
   return (
     <section className="about" id="about">
-       <motion.div 
+      <motion.div
         className="about-wrapper"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -369,12 +369,12 @@ const About = () => {
           <span className="number">01</span>
           <span className="label-text">About</span>
         </div>
-        
+
         <div className="about-grid">
           <h2 className="about-headline">
             Turning complex ideas into <span className="italic-display text-muted">production grade systems.</span>
           </h2>
-          
+
           <div className="about-content-right">
             <p className="about-paragraph">
               I focus on building real world software that is reliable, scalable, and maintainable. I approach development as system design, not just coding, combining strong fundamentals with modern full-stack tools to create applications that perform consistently and handle real usage.
@@ -395,11 +395,21 @@ const Projects = () => {
       title: "Novaport AI Agent",
       type: "Personal Project",
       description: "An AI-powered assistant designed to streamline workflows and automate repetitive tasks. Built with a focus on real-time interaction, clean UI, and seamless integration with modern APIs to deliver a practical and responsive user experience.",
-      tech: ["React", "React Router","Tailwind CSS", "Python", "Gemini AI"],
+      tech: ["React", "React Router", "Tailwind CSS", "Python", "Gemini AI"],
       category: "AI-Full Stack",
       year: "2026",
       link: "https://novaport-ai.vercel.app/",
       image: "./Novaport.png"
+    },
+    {
+      title: "SecureDesk",
+      type: "Personal Project",
+      description: "A role-based IT support ticket management REST API built with Spring Boot and Spring Security. Implements secure authentication, BCrypt password hashing, role-based authorization, ticket CRUD operations, JPA relationships, DTOs, validation, native SQL queries, and centralized exception handling.",
+      tech: ["Java", "Spring Boot", "Spring Security", "JPA", "Hibernate", "MySQL"],
+      category: "Backend",
+      year: "2026",
+      link: "https://github.com/karl2603/SecureDesk",
+      image: "./SecureDesk.png"
     },
     {
       title: "Crust & Crunch",
@@ -415,7 +425,7 @@ const Projects = () => {
       title: "MindCare Clinic",
       type: "Freelance Project",
       description: "A professional website developed for a therapy clinic, focusing on trust, accessibility, and user comfort. Designed to present services clearly while maintaining a calm and structured user experience.",
-      tech: ["React", "React Forms", "SEO Optimization", "Vercel", "Domain & DNS Management" ],
+      tech: ["React", "React Forms", "SEO Optimization", "Vercel", "Domain & DNS Management"],
       category: "Frontend",
       year: "2026",
       link: "https://happymindcare.in/",
@@ -430,22 +440,12 @@ const Projects = () => {
       year: "2025",
       link: "https://task-flow-phi-eight.vercel.app/",
       image: "./Taskflow.png"
-    },
-    {
-      title: "GitHub Explorer",
-      type: "Personal Project",
-      description: "A dynamic web application that fetches and visualizes GitHub user data using external APIs. Built with Axios for efficient data handling and designed to provide quick insights into repositories and activity.",
-      tech: ["React", "Axios", "GitHub API"],
-      category: "Frontend",
-      year: "2025",
-      link: "https://git-hub-explorer-psi.vercel.app/",
-      image: "./GithubExpo.png"
     }
   ];
 
   return (
     <section className="projects-section" id="work">
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -459,7 +459,7 @@ const Projects = () => {
       </motion.div>
       <div className="projects-stack">
         {projects.map((project, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="project-card interactive"
             initial={{ opacity: 0, y: 60 }}
@@ -472,7 +472,7 @@ const Projects = () => {
                 <img src={project.image} alt={project.title} className="project-image" loading="lazy" />
               </div>
             </div>
-            
+
             <div className="project-info">
               <div className="project-meta">
                 <span className="project-category">{project.category}</span>
@@ -483,7 +483,7 @@ const Projects = () => {
                 <span className="project-type-indicator">[{project.type}]</span>
               </div>
               <p className="project-desc">{project.description}</p>
-              
+
               <div className="project-footer">
                 <div className="project-tech">
                   {project.tech.map((t, i) => <span key={i}>{t}</span>)}
@@ -523,22 +523,22 @@ const Services = () => {
 
   return (
     <section className="services" id="services">
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={transition}
       >
-         <div className="section-label">
+        <div className="section-label">
           <span className="number">03</span>
           <span className="label-text">Core Expertise</span>
         </div>
       </motion.div>
-      
+
       <div className="services-list">
         {services.map((service, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="service-row interactive group"
             initial={{ opacity: 0, y: 40 }}
@@ -589,7 +589,7 @@ const Pricing = () => {
 
   return (
     <section className="pricing" id="pricing">
-      <motion.div 
+      <motion.div
         className="section-header center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -604,7 +604,7 @@ const Pricing = () => {
 
       <div className="pricing-grid">
         {tiers.map((tier, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className={`pricing-card interactive ${tier.highlight ? 'highlight' : ''}`}
             initial={{ opacity: 0, y: 40 }}
@@ -640,16 +640,16 @@ const Pricing = () => {
 
 const TechStack = () => {
   const stack = [
-    { 
-      category: "Programming Languages", 
+    {
+      category: "Programming Languages",
       items: [
         { name: "Java", icon: <FaJava color="#007396" /> },
         { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
         { name: "C", icon: <SiC color="#A8B9CC" /> }
-      ] 
+      ]
     },
-    { 
-      category: "Backend & Database", 
+    {
+      category: "Backend & Database",
       items: [
         { name: "Java", icon: <FaJava color="#007396" /> },
         { name: "Spring Boot", icon: <SiSpringboot color="#6DB33F" /> },
@@ -658,43 +658,43 @@ const TechStack = () => {
         { name: "JWT", icon: <SiJsonwebtokens color="#D63AFF" /> },
         { name: "JDBC", icon: <FaJava className="opacity-60" /> },
         { name: "MySQL", icon: <SiMysql color="#4479A1" /> }
-      ] 
+      ]
     },
-    { 
-      category: "Frontend Ecosystem", 
+    {
+      category: "Frontend Ecosystem",
       items: [
-        { name: "HTML5", icon: <FaHtml5 color="#E34F26" /> }, 
-        { name: "CSS3", icon: <FaCss3Alt color="#1572B6" /> }, 
-        { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> }, 
-        { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> }, 
-        { name: "React Router", icon: <SiReactrouter color="#CA4245" /> }, 
+        { name: "HTML5", icon: <FaHtml5 color="#E34F26" /> },
+        { name: "CSS3", icon: <FaCss3Alt color="#1572B6" /> },
+        { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
+        { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> },
+        { name: "React Router", icon: <SiReactrouter color="#CA4245" /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss color="#06B6D4" /> }
-      ] 
+      ]
     },
-    { 
-      category: "Tools & Deployment", 
+    {
+      category: "Tools & Deployment",
       items: [
-        { name: "Git", icon: <SiGit color="#F05032" /> }, 
-        { name: "GitHub", icon: <SiGithub color="#FFFFFF" /> }, 
+        { name: "Git", icon: <SiGit color="#F05032" /> },
+        { name: "GitHub", icon: <SiGithub color="#FFFFFF" /> },
         { name: "VS Code", icon: <VscVscode color="#007ACC" /> },
         { name: "IntelliJ IDEA", icon: <SiIntellijidea color="#FE315D" /> },
         { name: "Postman", icon: <SiPostman color="#FF6C37" /> },
-        { name: "NPM", icon: <SiNpm color="#CB3837" /> }, 
-        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> }, 
-        { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> }, 
+        { name: "NPM", icon: <SiNpm color="#CB3837" /> },
+        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> },
+        { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> },
         { name: "Render", icon: <SiRender color="#46E3B7" /> }
-      ] 
+      ]
     }
   ];
 
   const handleMouseMove = (e) => {
-    if (window.innerWidth <= 768) return; 
+    if (window.innerWidth <= 768) return;
 
     const cards = document.querySelectorAll('.bento-box');
-    for(const card of cards) {
+    for (const card of cards) {
       const rect = card.getBoundingClientRect(),
-            x = e.clientX - rect.left,
-            y = e.clientY - rect.top;
+        x = e.clientX - rect.left,
+        y = e.clientY - rect.top;
       card.style.setProperty("--mouse-x", `${x}px`);
       card.style.setProperty("--mouse-y", `${y}px`);
     }
@@ -702,7 +702,7 @@ const TechStack = () => {
 
   return (
     <section className="tech-stack" id="stack" onMouseMove={handleMouseMove}>
-       <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -717,7 +717,7 @@ const TechStack = () => {
 
       <div className="bento-stack-grid">
         {stack.map((group, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="bento-box interactive"
             initial={{ opacity: 0, y: 40 }}
@@ -750,7 +750,7 @@ const Experience = () => {
 
   return (
     <section className="experience" id="experience">
-      <motion.div 
+      <motion.div
         className="section-header"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -765,8 +765,8 @@ const Experience = () => {
 
       <div className="experience-list">
         {experiences.map((exp, index) => (
-          <motion.div 
-            key={index} 
+          <motion.div
+            key={index}
             className="experience-item interactive group"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -819,7 +819,7 @@ const Contact = () => {
 
   return (
     <section className="contact" id="contact">
-      <motion.div 
+      <motion.div
         className="contact-wrapper interactive"
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -914,7 +914,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <Analytics/>
+      <Analytics />
     </div>
   );
 }
