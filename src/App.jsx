@@ -743,7 +743,8 @@ const TechStack = () => {
 
 const Experience = () => {
   const experiences = [
-    { year: "Feb 2026 - Present", role: "Web Developer", company: "Freelance", desc: "Working with clients to design and build responsive, high-performance websites and web applications. Focused on clean UI, reliable backend integration, and delivering production-ready solutions tailored to real business needs." },
+    { year: "Sep 2026 - Present", role: "Software Developer Intern", company: "ApexFlow Technologies", desc: "Contributing to a live client project by developing and enhancing production-ready features using React, TypeScript, Supabase, PostgreSQL, and Cloudflare Pages. Collaborating with the development team through Git to build responsive, scalable, and reliable web solutions." },
+    { year: "Feb 2026 - June 2026", role: "Web Developer", company: "Freelance", desc: "Working with clients to design and develop responsive websites and web applications. Focused on clean UI, seamless functionality, and delivering practical solutions tailored to each client's requirements." },
     { year: "Dec 2024 - Jan 2025", role: "Frontend Developer Intern", company: "CodeBind Technologies", desc: "Contributed to frontend development using React, improving UI consistency and performance. Worked with reusable components, handled state management, and collaborated on building responsive and maintainable interfaces." },
     { year: "Aug 2023 - Present", role: "Computer Science Student", company: "SRM University", desc: "Pursuing a degree in Computer Science with a focus on core programming, data structures, and system design. Building practical projects to apply concepts in real-world scenarios and strengthen problem-solving skills." }
   ];
