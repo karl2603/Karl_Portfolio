@@ -7,7 +7,7 @@ import {
   SiC, SiJavascript, SiReact,
   SiReactrouter, SiTailwindcss, SiSpringboot, SiSpringsecurity,
   SiJsonwebtokens, SiMysql, SiNpm, SiGit, SiGithub, SiVercel,
-  SiNetlify, SiRender, SiPostman, SiIntellijidea
+  SiPostman, SiIntellijidea, SiTypescript, SiPostgresql, SiSupabase
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 import { TbApi } from 'react-icons/tb';
@@ -657,7 +657,9 @@ const TechStack = () => {
         { name: "REST API", icon: <TbApi color="#FFFFFF" /> },
         { name: "JWT", icon: <SiJsonwebtokens color="#D63AFF" /> },
         { name: "JDBC", icon: <FaJava className="opacity-60" /> },
-        { name: "MySQL", icon: <SiMysql color="#4479A1" /> }
+        { name: "MySQL", icon: <SiMysql color="#4479A1" /> },
+        { name: "PostgreSQL", icon: <SiPostgresql color="#4169E1" /> },
+        { name: "Supabase", icon: <SiSupabase color="#3FCF8E" /> }
       ]
     },
     {
@@ -666,6 +668,7 @@ const TechStack = () => {
         { name: "HTML5", icon: <FaHtml5 color="#E34F26" /> },
         { name: "CSS3", icon: <FaCss3Alt color="#1572B6" /> },
         { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
+        { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
         { name: "React", icon: <SiReact color="#61DAFB" className="spin-icon" /> },
         { name: "React Router", icon: <SiReactrouter color="#CA4245" /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss color="#06B6D4" /> }
@@ -680,9 +683,7 @@ const TechStack = () => {
         { name: "IntelliJ IDEA", icon: <SiIntellijidea color="#FE315D" /> },
         { name: "Postman", icon: <SiPostman color="#FF6C37" /> },
         { name: "NPM", icon: <SiNpm color="#CB3837" /> },
-        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> },
-        { name: "Netlify", icon: <SiNetlify color="#00C7B7" /> },
-        { name: "Render", icon: <SiRender color="#46E3B7" /> }
+        { name: "Vercel", icon: <SiVercel color="#FFFFFF" /> }
       ]
     }
   ];
