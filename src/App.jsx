@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, Download, Check, Menu, X } from 'lucide-react';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import { SiLeetcode } from "react-icons/si";
 import { FaJava, FaInstagram, FaHtml5, FaCss3Alt } from 'react-icons/fa';
 import {
   SiC, SiJavascript, SiReact,
@@ -327,7 +328,7 @@ const Hero = () => {
               </a>
             </Magnetic>
             <Magnetic strength={0.4}>
-              <a href="/KarlResume.pdf" download="KarlResume.pdf" className="btn-outline interactive group">
+              <a href="/KarlResume.pdf" download="KarlResumeOct.pdf" className="btn-outline interactive group">
                 <span className="btn-text">Download Resume</span>
                 <Download size={18} className="group-hover:translate-y-1 transition-transform" />
               </a>
@@ -888,6 +889,7 @@ const Footer = () => {
           <Magnetic strength={0.6}><a href="https://github.com/karl2603" className="footer-social-btn interactive"><FiGithub size={20} /></a></Magnetic>
           <Magnetic strength={0.6}><a href="https://www.linkedin.com/in/karlarvindraj/" className="footer-social-btn interactive"><FiLinkedin size={20} /></a></Magnetic>
           <Magnetic strength={0.6}><a href="https://www.instagram.com/_._karl_._/" className="footer-social-btn interactive"><FaInstagram size={20} /></a></Magnetic>
+          <Magnetic strength={0.6}><a href="https://leetcode.com/u/Karl_26/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode profile" className="footer-social-btn interactive"><SiLeetcode size={20} /></a></Magnetic>
         </div>
       </div>
 
