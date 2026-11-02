@@ -328,7 +328,7 @@ const Hero = () => {
               </a>
             </Magnetic>
             <Magnetic strength={0.4}>
-              <a href="/KarlResume.pdf" download="KarlResumeOct.pdf" className="btn-outline interactive group">
+              <a href="/KarlResume.pdf" download="KarlResumeNov.pdf" className="btn-outline interactive group">
                 <span className="btn-text">Download Resume</span>
                 <Download size={18} className="group-hover:translate-y-1 transition-transform" />
               </a>
@@ -401,6 +401,16 @@ const Projects = () => {
       year: "2026",
       link: "https://novaport-ai.vercel.app/",
       image: "./Novaport.png"
+    },
+    {
+      title: "BookMyDoc",
+      type: "Personal Project",
+      description: "A full-stack doctor appointment booking application built with React, TypeScript, and Spring Boot. Implements JWT authentication, patient and doctor workflows, REST APIs, JPA relationships, MySQL persistence, appointment scheduling, and overlapping-slot validation.",
+      tech: ["Java", "Spring Boot", "React", "TypeScript", "Spring Security", "JWT", "Spring Data JPA", "Hibernate", "MySQL"],
+      category: "Full Stack",
+      year: "2026",
+      link: "https://github.com/karl2603/BookMyDoctor",
+      image: "./BookMyDoc.png"
     },
     {
       title: "SecureDesk",
