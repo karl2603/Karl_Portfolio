@@ -406,7 +406,7 @@ const Projects = () => {
       title: "BookMyDoc",
       type: "Personal Project",
       description: "A full-stack doctor appointment booking application built with React, TypeScript, and Spring Boot. Implements JWT authentication, patient and doctor workflows, REST APIs, JPA relationships, MySQL persistence, appointment scheduling, and overlapping-slot validation.",
-      tech: ["Java", "Spring Boot", "React", "TypeScript", "Spring Security", "MySQL"],
+      tech: ["React", "TypeScript", "Java", "Spring Boot", "Spring Security", "MySQL"],
       category: "Full Stack",
       year: "2026",
       link: "https://github.com/karl2603/BookMyDoctor",
